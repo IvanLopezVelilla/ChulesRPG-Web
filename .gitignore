@@ -1,0 +1,61 @@
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+
+# User-uploaded content and database exports
+Uploads/*
+!Uploads/.gitkeep
+*.sql
+!database/schema.sql
+!database/migrations/**
+*.sql.gz
+*.dump
+
+# Local databases and backups
+*.sqlite
+*.sqlite3
+*.db
+*.bak
+*.backup
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.rar
+*.7z
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyd
+.venv/
+venv/
+
+# PHP / Composer
+vendor/
+composer.phar
+
+# JavaScript dependencies and generated output
+node_modules/
+dist/
+build/
+
+# Logs, caches and test output
+*.log
+.cache/
+.pytest_cache/
+.phpunit.cache/
+coverage/
+
+# Local IDE and operating-system files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Certificates and private keys
+*.pem
+*.key
+*.p12
+*.pfx

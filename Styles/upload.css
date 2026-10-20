@@ -1,0 +1,561 @@
+/* ============================================================
+   upload.css — ChulesRPG · Upload Asset page
+   Requires styles.css to be loaded first
+   ============================================================ */
+
+/* ── PAGE HEADER ─────────────────────────────────────────── */
+.upload-page-header {
+  padding: 4rem 0 2.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.upload-page-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 50% 70% at 50% 50%, rgba(0,255,224,0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+.upload-page-title {
+  font-family: var(--font-pixel);
+  font-size: clamp(0.9rem, 3vw, 1.7rem);
+  color: #fff;
+  line-height: 1.5;
+  margin-bottom: 0.8rem;
+  text-shadow: 0 0 30px rgba(0,255,224,0.15), 0 2px 0 #000;
+}
+.upload-page-title .highlight {
+  color: var(--neon-gold);
+  text-shadow: var(--shadow-gold);
+}
+.upload-page-subtitle {
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* ── LAYOUT ──────────────────────────────────────────────── */
+.upload-section { padding: 2rem 0 5rem; }
+
+.upload-layout {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 2rem;
+  align-items: start;
+}
+
+/* ── LOGIN WARNING ───────────────────────────────────────── */
+.upload-login-warning {
+  position: relative;
+  background: var(--bg-panel);
+  border: 1px solid var(--neon-gold);
+  box-shadow: 0 0 20px rgba(255,215,0,0.1);
+  padding: 3.5rem 2.5rem;
+  text-align: center;
+  grid-column: 1; /* stays in form column, not full width */
+}
+
+.warning-icon {
+  font-size: 2.5rem;
+  color: var(--neon-gold);
+  text-shadow: var(--shadow-gold);
+  margin-bottom: 1.2rem;
+  animation: flicker 3s infinite;
+}
+.warning-title {
+  font-family: var(--font-pixel);
+  font-size: 0.75rem;
+  color: var(--neon-gold);
+  text-shadow: var(--shadow-gold);
+  letter-spacing: 0.2em;
+  margin-bottom: 1.2rem;
+}
+.warning-text {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 380px;
+  margin: 0 auto 2rem;
+}
+.warning-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Corner brackets — gold for warning */
+.upload-login-warning .ep-tl,
+.upload-login-warning .ep-tr,
+.upload-login-warning .ep-bl,
+.upload-login-warning .ep-br {
+  border-color: var(--neon-gold) !important;
+}
+
+/* ── UPLOAD PANEL ────────────────────────────────────────── */
+.upload-panel {
+  position: relative;
+  background: var(--bg-panel);
+  border: 1px solid var(--border-main);
+  padding: 2.2rem 2rem;
+}
+.upload-panel-title {
+  font-family: var(--font-pixel);
+  font-size: 0.7rem;
+  color: var(--neon-cyan);
+  text-shadow: var(--shadow-cyan);
+  letter-spacing: 0.15em;
+  margin-bottom: 2rem;
+}
+
+/* Reuse .form-group, .form-group label, input from styles.css */
+
+.field-hint {
+  display: block;
+  font-family: var(--font-pixel);
+  font-size: 0.4rem;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+  margin-top: 0.45rem;
+}
+
+/* ── SELECT ──────────────────────────────────────────────── */
+.select-wrap {
+  position: relative;
+}
+.select-wrap select {
+  width: 100%;
+  background: var(--bg-deep);
+  border: 1px solid var(--border-main);
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  padding: 0.65rem 2.2rem 0.65rem 0.9rem;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+.select-wrap select:focus { border-color: var(--neon-cyan); }
+.select-wrap select option { background: var(--bg-panel); color: var(--text-primary); }
+.select-wrap select option:disabled { color: var(--text-dim); }
+
+.select-arrow {
+  position: absolute;
+  right: 0.8rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-pixel);
+  font-size: 0.5rem;
+  color: var(--neon-cyan);
+  pointer-events: none;
+}
+
+/* ── FILE DROP ZONE ──────────────────────────────────────── */
+.file-drop-zone {
+  position: relative;
+  background: var(--bg-deep);
+  border: 2px dashed var(--border-main);
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s, background 0.2s;
+  cursor: pointer;
+  overflow: hidden;
+}
+.file-drop-zone:hover,
+.file-drop-zone.dragover {
+  border-color: var(--neon-cyan);
+  background: rgba(0,255,224,0.03);
+}
+.file-drop-zone .ep-tl,
+.file-drop-zone .ep-tr,
+.file-drop-zone .ep-bl,
+.file-drop-zone .ep-br {
+  border-color: var(--neon-cyan);
+  opacity: 0.5;
+}
+.file-drop-zone:hover .ep-tl,
+.file-drop-zone:hover .ep-tr,
+.file-drop-zone:hover .ep-bl,
+.file-drop-zone:hover .ep-br { opacity: 1; }
+
+.drop-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 2rem;
+  text-align: center;
+}
+.drop-icon {
+  font-size: 2rem;
+  color: var(--text-dim);
+  font-family: var(--font-pixel);
+  line-height: 1;
+}
+.drop-text {
+  font-family: var(--font-pixel);
+  font-size: 0.52rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.1em;
+}
+.drop-subtext {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+.drop-browse-btn {
+  margin-top: 0.3rem;
+  cursor: pointer;
+  font-size: 0.52rem !important;
+}
+
+/* Hidden real file input */
+.file-input-hidden {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+
+/* Image preview once selected */
+.image-preview {
+  max-width: 100%;
+  max-height: 280px;
+  object-fit: contain;
+  image-rendering: pixelated; /* keeps pixel art crisp */
+  padding: 1rem;
+}
+
+/* ── SUBMIT BUTTON ───────────────────────────────────────── */
+.upload-submit-btn {
+  width: 100%;
+  margin-top: 0.8rem;
+  font-size: 0.65rem !important;
+  padding: 1.1rem !important;
+  border-width: 2px !important;
+  letter-spacing: 0.15em !important;
+  position: relative;
+  overflow: hidden;
+  animation: upload-pulse 2.5s ease-in-out infinite;
+}
+.upload-submit-btn::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 55%;
+  height: 100%;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.2), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.4s;
+}
+.upload-submit-btn:hover::before { left: 160%; }
+.upload-submit-btn:hover {
+  animation: none;
+  box-shadow: 0 0 14px #ffd700, 0 0 36px rgba(255,215,0,0.4) !important;
+  transform: translateY(-2px);
+}
+@keyframes upload-pulse {
+  0%, 100% { box-shadow: 0 0 6px rgba(255,215,0,0.4); }
+  50%       { box-shadow: 0 0 18px rgba(255,215,0,0.8), 0 0 40px rgba(255,215,0,0.3); }
+}
+
+/* ── SIDEBAR ─────────────────────────────────────────────── */
+.upload-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.sidebar-panel {
+  position: relative;
+  background: var(--bg-panel);
+  border: 1px solid var(--border-main);
+  padding: 1.4rem 1.5rem;
+}
+.sidebar-title {
+  font-family: var(--font-pixel);
+  font-size: 0.55rem;
+  color: var(--neon-cyan);
+  text-shadow: var(--shadow-cyan);
+  letter-spacing: 0.15em;
+  margin-bottom: 1.2rem;
+}
+
+/* Guidelines list */
+.guideline-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+.guideline-list li {
+  font-family: var(--font-pixel);
+  font-size: 0.48rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.05em;
+  line-height: 1.8;
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+}
+.guideline-list li::before {
+  content: '▶';
+  color: var(--neon-cyan);
+  flex-shrink: 0;
+}
+
+/* Category info list */
+.category-info-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+.category-info-list li {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.cat-tag {
+  font-family: var(--font-pixel);
+  font-size: 0.35rem;
+  letter-spacing: 0.08em;
+  padding: 0.18rem 0.45rem;
+  flex-shrink: 0;
+  text-transform: uppercase;
+  color: var(--bg-deep);
+}
+.cat-tag.cyan   { background: var(--neon-cyan); }
+.cat-tag.red    { background: var(--neon-red); }
+.cat-tag.gold   { background: var(--neon-gold); }
+.cat-tag.green  { background: var(--neon-green); }
+.cat-tag.purple { background: #bf5fff; }
+
+/* Back button */
+.sidebar-back-btn {
+  text-align: center;
+  font-size: 0.52rem !important;
+  padding: 0.75rem !important;
+}
+
+.file-drop-zone.has-image {
+    border-style: solid;
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 12px rgba(0,255,224,0.15);
+}
+
+.remove-image-btn {
+    position: absolute;
+    bottom: 0.6rem;
+    right: 0.6rem;
+    font-size: 0.45rem !important;
+    padding: 0.35rem 0.7rem !important;
+    z-index: 1;
+}
+
+/* ── SPRITE DIRECTIONS GRID ──────────────────────────────── */
+.sprite-directions-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+  background: var(--bg-deep);
+  border: 2px dashed var(--border-main);
+  padding: 1rem;
+  transition: border-color 0.2s;
+}
+.sprite-directions-grid:focus-within {
+  border-color: rgba(0,255,224,0.3);
+}
+
+.sd-quadrant {
+  background: var(--bg-panel);
+  border: 1px solid var(--border-main);
+  padding: 0.75rem 0.7rem 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  position: relative;
+  transition: border-color 0.2s;
+}
+.sd-quadrant:focus-within {
+  border-color: rgba(0,255,224,0.4);
+}
+
+/* Direction label */
+.sd-dir-label {
+  display: block;
+  font-family: var(--font-pixel);
+  font-size: 0.52rem;
+  color: var(--neon-cyan);
+  text-shadow: var(--shadow-cyan);
+  letter-spacing: 0.15em;
+  padding-bottom: 0.45rem;
+  border-bottom: 1px solid var(--border-main);
+}
+
+/* Row of 2 slots per direction */
+.sd-slots-row {
+  display: flex;
+  gap: 0.45rem;
+}
+
+/* Individual slot */
+.sd-slot {
+  flex: 1;
+  aspect-ratio: 1 / 1;
+  background: var(--bg-deep);
+  border: 1px dashed var(--border-main);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+  overflow: hidden;
+  min-height: 56px;
+}
+.sd-slot:hover {
+  border-color: var(--neon-cyan);
+  background: rgba(0,255,224,0.04);
+  box-shadow: inset 0 0 10px rgba(0,255,224,0.05);
+}
+.sd-slot:hover .sd-plus {
+  color: var(--neon-cyan);
+  text-shadow: var(--shadow-cyan);
+}
+
+/* Frame number badge */
+.sd-frame-num {
+  position: absolute;
+  top: 0.22rem;
+  left: 0.28rem;
+  font-family: var(--font-pixel);
+  font-size: 0.35rem;
+  color: var(--text-dim);
+  letter-spacing: 0.06em;
+  pointer-events: none;
+}
+
+/* Plus icon */
+.sd-plus {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  color: var(--text-dim);
+  line-height: 1;
+  transition: color 0.2s, text-shadow 0.2s;
+  pointer-events: none;
+}
+
+/* Preview image (shown via JS when file loaded) */
+.sd-preview {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  image-rendering: pixelated;
+  padding: 0.2rem;
+}
+
+/* State when a file has been assigned */
+.sd-slot.has-image {
+  border-style: solid;
+  border-color: var(--neon-cyan);
+  box-shadow: 0 0 8px rgba(0,255,224,0.12);
+}
+.sd-slot.has-image .sd-plus,
+.sd-slot.has-image .sd-frame-num { display: none; }
+
+/* Hide real file input — the label triggers it */
+.sd-file-input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+/* ── SKILL FIELDS ────────────────────────────────────────── */
+.skill-fields-divider {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 1.4rem;
+  margin-top: 0.2rem;
+}
+.skill-fields-divider::before,
+.skill-fields-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border-main);
+}
+.skill-fields-divider span {
+  font-family: var(--font-pixel);
+  font-size: 0.52rem;
+  color: var(--neon-gold);
+  text-shadow: var(--shadow-gold);
+  letter-spacing: 0.18em;
+  white-space: nowrap;
+}
+
+/* Two inputs side by side */
+.skill-fields-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+/* Textarea reuses base input style, just taller */
+textarea#skill-description {
+  width: 100%;
+  background: var(--bg-deep);
+  border: 1px solid var(--border-main);
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  padding: 0.65rem 0.9rem;
+  outline: none;
+  resize: vertical;
+  min-height: 80px;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+textarea#skill-description:focus { border-color: var(--neon-cyan); }
+textarea#skill-description::placeholder { color: var(--text-dim); }
+
+/* ── MOBILE ──────────────────────────────────────────────── */
+@media (max-width: 860px) {
+  .upload-layout {
+    grid-template-columns: 1fr;
+  }
+  .upload-sidebar {
+    order: -1;
+  }
+  .skill-fields-row {
+    grid-template-columns: 1fr;
+  }
+  /* ── ENEMY FIELDS ────────────────────────────────────────── */
+.enemy-fields-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+}

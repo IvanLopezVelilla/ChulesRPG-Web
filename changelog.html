@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ChulesRPG — Changelog</title>
+  <link rel="stylesheet" href="Styles/styles.css" />
+  <link rel="stylesheet" href="Styles/changelog.css" />
+  <script src="JS/changelog.js" defer></script>
+
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="container">
+      <span>[ WELCOME TO THE OFICIAL WEB OF CHULES RPG ]</span>
+      <span class="marquee-text">● VERSION 1.0 IN DEVELOPMENT</span>
+      <span class="topbar-right">► DOWNLOAD AVAILABLE</span>
+    </div>
+  </div>
+
+  <!-- HEADER / NAVBAR -->
+  <header>
+    <nav class="container">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-bracket">[</span>
+        CHULES RPG
+        <span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html#about">ChulesRpg</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="changelog.html" class="nav-active">Changelog</a></li>
+        <li><a href="forum.html">Forum</a></li>
+      </ul>
+      <div class="nav-auth">
+        <a href="index.html#auth" class="btn btn-outline-cyan" id="nav-login-btn">LOGIN</a>
+        <a href="index.html#auth" class="btn btn-fill-cyan" id="nav-register-btn">REGISTER</a>
+        <p id="loggedUsername"></p>
+        <button class="btn btn-outline-red" id="nav-logout-btn" hidden>LOGOUT ⏻</button>
+        <button class="btn btn-outline-cyan" id="nav-admin-btn" hidden>ADMIN</button>
+      </div>
+    </nav>
+  </header>
+
+
+  <main>
+
+    <!-- PAGE HEADER -->
+    <section class="cl-page-header">
+      <div class="container">
+        <p class="hero-eyebrow">▶ DEVELOPMENT LOG · VERSION HISTORY</p>
+        <h1 class="cl-page-title">
+          // CHANGE<span class="highlight">LOG</span>
+        </h1>
+        <p class="cl-page-subtitle">
+          Every update, fix and new feature documented.<br>
+          The game grows with the community.
+        </p>
+      </div>
+    </section>
+
+
+    <!-- ADMIN: NEW CHANGELOG ENTRY FORM -->
+    <div class="cl-admin-form-wrap" id="admin-form-wrap" hidden>
+      <div class="container">
+
+        <div class="cl-admin-form">
+          <span class="ep-corner caf-tl"></span>
+          <span class="ep-corner caf-tr"></span>
+          <span class="ep-corner caf-bl"></span>
+          <span class="ep-corner caf-br"></span>
+
+          <div class="cl-admin-form-header">
+            <span class="cl-admin-form-title">// ADMIN · NEW CHANGELOG ENTRY</span>
+            <button class="cl-admin-toggle btn btn-outline-cyan" id="cl-admin-toggle">▲ COLLAPSE</button>
+          </div>
+
+          <div class="cl-admin-form-body" id="cl-admin-form-body">
+
+            <!-- Row 1: name + build + type -->
+            <div class="cl-form-row">
+
+              <div class="form-group">
+                <label for="cl-name">Entry name</label>
+                <input type="text" id="cl-name" placeholder="Name this new changelog..." />
+              </div>
+
+              <div class="form-group">
+                <label for="cl-build">Build version</label>
+                <input type="text" id="cl-build" placeholder="v0.4.0" />
+              </div>
+
+              <div class="form-group">
+                <label for="cl-type">Type</label>
+                <div class="select-wrap">
+                  <select id="cl-type">
+                    <option value="" disabled selected>-- Select type --</option>
+                    <option value="major">MAJOR</option>
+                    <option value="minor">MINOR</option>
+                    <option value="hotfix">HOTFIX</option>
+                  </select>
+                  <span class="select-arrow">▼</span>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Row 2: changes list -->
+            <div class="cl-form-changes-section">
+
+              <div class="cl-form-changes-header">
+                <span class="cl-form-label">// CHANGES</span>
+                <button class="btn btn-outline-cyan cl-add-change-btn" id="cl-add-change-btn" type="button">
+                  + ADD CHANGE
+                </button>
+              </div>
+
+              <!-- Changes container — rows injected here by JS -->
+              <div class="cl-form-changes-list" id="cl-form-changes-list">
+
+                <!-- Default first row -->
+                <div class="cl-form-change-row">
+                  <div class="select-wrap cl-change-type-wrap">
+                    <select class="cl-change-type-select">
+                      <option value="added">ADD</option>
+                      <option value="changed">CHG</option>
+                      <option value="fixed">FIX</option>
+                      <option value="removed">REM</option>
+                    </select>
+                    <span class="select-arrow">▼</span>
+                  </div>
+                  <input type="text" class="cl-change-input" placeholder="Describe this change..." />
+                  <button class="btn btn-outline-red cl-remove-change-btn" type="button">✖</button>
+                </div>
+
+              </div>
+
+            </div>
+
+            <!-- Submit -->
+            <div class="cl-form-submit-row">
+              <button class="btn btn-fill-gold cl-submit-btn" id="cl-submit-btn" type="button">
+                ► PUBLISH CHANGELOG
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- CHANGELOG BODY -->
+    <section class="cl-section">
+      <div class="container">
+
+        <div class="cl-layout">
+
+          <!-- VERSION TIMELINE -->
+          <div class="cl-timeline"></div>
+
+          <!-- SIDEBAR -->
+          <aside class="cl-sidebar">
+
+            <!-- Current version card -->
+            <div class="cl-sidebar-card">
+              <span class="ep-corner cs-tl"></span>
+              <span class="ep-corner cs-tr"></span>
+              <span class="ep-corner cs-bl"></span>
+              <span class="ep-corner cs-br"></span>
+              <span class="cl-sidebar-title">// CURRENT BUILD</span>
+              <div class="cl-current-version">UNRELEASED</div>
+              <div class="cl-current-state">● IN DEVELOPMENT</div>
+              <div class="cl-current-date">Last update: XX / XX / XXXX</div>
+            </div>
+
+            <!-- Legend -->
+            <div class="cl-sidebar-card">
+              <span class="ep-corner cs-tl"></span>
+              <span class="ep-corner cs-tr"></span>
+              <span class="ep-corner cs-bl"></span>
+              <span class="ep-corner cs-br"></span>
+              <span class="cl-sidebar-title">// LEGEND</span>
+              <ul class="cl-legend-list">
+                <li><span class="cl-change-tag cl-tag-add-sm">ADD</span> New feature added</li>
+                <li><span class="cl-change-tag cl-tag-chg-sm">CHG</span> Existing feature changed</li>
+                <li><span class="cl-change-tag cl-tag-fix-sm">FIX</span> Bug or issue fixed</li>
+                <li><span class="cl-change-tag cl-tag-rem-sm">REM</span> Feature removed</li>
+              </ul>
+            </div>
+
+            <!-- Version types -->
+            <div class="cl-sidebar-card">
+              <span class="ep-corner cs-tl"></span>
+              <span class="ep-corner cs-tr"></span>
+              <span class="ep-corner cs-bl"></span>
+              <span class="ep-corner cs-br"></span>
+              <span class="cl-sidebar-title">// VERSION TYPES</span>
+              <ul class="cl-legend-list">
+                <li><span class="cl-tag cl-tag-major">MAJOR</span> Big new systems</li>
+                <li><span class="cl-tag cl-tag-minor">MINOR</span> Features &amp; improvements</li>
+                <li><span class="cl-tag cl-tag-fix">HOTFIX</span> Critical bug fixes</li>
+              </ul>
+            </div>
+
+          </aside>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <p class="logo">[ CHULES RPG ]</p>
+          <p>A project made out of love for videogames and videogame development</p>
+        </div>
+        <div class="footer-col">
+          <h5>Navigation</h5>
+          <ul>
+            <li><a href="index.html#about">ChulesRpg</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="news.html">News</a></li>
+            <li><a href="changelog.html">Changelog</a></li>
+            <li><a href="forum.html">Forum</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Community</h5>
+          <ul>
+            <li><a href="#">Discord</a></li>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">YouTube</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© ChulesRPG · All rights reserved</p>
+        <p class="footer-version">v1.0 · IN DEVELOPMENT</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ERROR POPUP -->
+  <div id="error-overlay" class="error-overlay" hidden>
+    <div class="error-popup">
+      <span class="ep-corner ep-tl"></span>
+      <span class="ep-corner ep-tr"></span>
+      <span class="ep-corner ep-bl"></span>
+      <span class="ep-corner ep-br"></span>
+      <div class="error-popup-header">
+        <span class="error-popup-icon">✖</span>
+        <span class="error-popup-title">// SYSTEM ERROR</span>
+        <button class="error-popup-close" id="error-close" aria-label="Close">✖</button>
+      </div>
+      <div class="error-popup-body">
+        <p class="error-code">ERR_CODE :: <span id="error-code">000</span></p>
+        <p id="error-message" class="error-message">An unexpected error has occurred.</p>
+      </div>
+      <div class="error-popup-footer">
+        <button class="btn btn-outline-red" id="error-dismiss">[ DISMISS ]</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUCCESS POPUP -->
+  <div id="success-overlay" class="success-overlay" hidden>
+    <div class="success-popup">
+      <span class="ep-corner sp-tl"></span>
+      <span class="ep-corner sp-tr"></span>
+      <span class="ep-corner sp-bl"></span>
+      <span class="ep-corner sp-br"></span>
+      <div class="success-popup-header">
+        <span class="success-popup-icon">✔</span>
+        <span class="success-popup-title">// SYSTEM OK</span>
+        <button class="success-popup-close" id="success-close" aria-label="Close">✖</button>
+      </div>
+      <div class="success-popup-body">
+        <p class="success-code">OK_CODE :: <span id="success-code">200</span></p>
+        <p id="success-message" class="success-message">Operation completed successfully.</p>
+      </div>
+      <div class="success-popup-footer">
+        <button class="btn btn-outline-green-popup" id="success-dismiss">[ OK ]</button>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

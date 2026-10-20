@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ChulesRPG — Asset Detail</title>
+  <link rel="stylesheet" href="Styles/styles.css" />
+  <link rel="stylesheet" href="Styles/asset.css" />
+  <script src="JS/asset.js" defer></script>
+
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="container">
+      <span>[ WELCOME TO THE OFICIAL WEB OF CHULES RPG ]</span>
+      <span class="marquee-text">● VERSION 1.0 IN DEVELOPMENT</span>
+      <span class="topbar-right">► DOWNLOAD AVAILABLE</span>
+    </div>
+  </div>
+
+  <!-- HEADER / NAVBAR -->
+  <header>
+    <nav class="container">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-bracket">[</span>
+        CHULES RPG
+        <span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html#about">ChulesRpg</a></li>
+        <li><a href="gallery.html" class="nav-active">Gallery</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="changelog.html">Changelog</a></li>
+        <li><a href="forum.html">Forum</a></li>
+      </ul>
+      <div class="nav-auth">
+        <a href="index.html#auth" class="btn btn-outline-cyan" id="nav-login-btn">LOGIN</a>
+        <a href="index.html#auth" class="btn btn-fill-cyan" id="nav-register-btn">REGISTER</a>
+        <p id="loggedUsername"></p>
+        <button class="btn btn-outline-red" id="nav-logout-btn" hidden>LOGOUT ⏻</button>
+        <button class="btn btn-outline-cyan" id="nav-admin-btn" hidden>ADMIN</button>
+      </div>
+    </nav>
+  </header>
+
+
+  <main>
+
+    <!-- BREADCRUMB -->
+    <div class="asset-breadcrumb">
+      <div class="container">
+        <a href="gallery.html" class="breadcrumb-back">
+          ◀ BACK TO GALLERY
+        </a>
+        <span class="breadcrumb-sep">/</span>
+        <span class="breadcrumb-current" id="asset-breadcrumb-name">ASSET NAME</span>
+      </div>
+    </div>
+
+
+    <!-- ASSET DETAIL -->
+    <section class="asset-detail-section">
+      <div class="container">
+
+        <div class="asset-detail-layout">
+
+          <!-- LEFT: IMAGE PANEL -->
+          <div class="asset-image-panel">
+
+            <div class="asset-image-viewer">
+              <button class="img-nav-btn" id="img-prev-btn" aria-label="Previous image">◀</button>
+
+            <div class="asset-image-frame">
+              <!-- Corner brackets -->
+              <span class="ep-corner ad-tl"></span>
+              <span class="ep-corner ad-tr"></span>
+              <span class="ep-corner ad-bl"></span>
+              <span class="ep-corner ad-br"></span>
+
+              <!-- Main image -->
+              <div class="asset-image-wrap">
+                <img
+                  src=""
+                  alt="Asset preview"
+                  id="asset-main-image"
+                  class="asset-detail-img"
+                />
+                <!-- Placeholder shown when no image loaded -->
+                <div class="asset-img-placeholder" id="asset-img-placeholder">
+                  <span class="placeholder-icon">▣</span>
+                  <span class="placeholder-label">NO PREVIEW</span>
+                </div>
+              </div>
+            </div>
+
+              <button class="img-nav-btn" id="img-next-btn" aria-label="Next image">▶</button>
+            </div>
+
+            <!-- Asset ID tag -->
+            <div class="asset-id-tag">
+              <span class="id-label">ASSET_ID</span>
+              <span class="id-value" id="asset-id">#000000</span>
+            </div>
+
+          </div>
+
+
+          <!-- RIGHT: INFO PANEL -->
+          <div class="asset-info-panel">
+
+            <!-- Header -->
+            <div class="asset-detail-header">
+              <div class="asset-detail-eyebrow">
+                <span class="asset-detail-category" id="asset-category">CATEGORY</span>
+                <span class="asset-detail-status" id="asset-status-badge" hidden>● VOTED</span>
+              </div>
+              <h1 class="asset-detail-title" id="asset-name">ASSET NAME</h1>
+            </div>
+
+            <!-- Stats row -->
+            <div class="asset-stats-row">
+              <div class="asset-stat">
+                <span class="stat-val" id="asset-votes">0</span>
+                <span class="stat-lbl">★ VOTES</span>
+              </div>
+              <div class="asset-stat">
+                <span class="stat-val" id="asset-date">--/--/----</span>
+                <span class="stat-lbl">UPLOADED</span>
+              </div>
+            </div>
+
+            <!-- Meta data table -->
+            <div class="asset-meta-table">
+              <div class="meta-row">
+                <span class="meta-key">Uploaded by</span>
+                <span class="meta-val" id="asset-author">—</span>
+              </div>
+              <div class="meta-row">
+                <span class="meta-key">Category</span>
+                <span class="meta-val" id="asset-category-full">—</span>
+              </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="asset-actions">
+              <button class="btn btn-fill-gold asset-vote-btn" id="asset-vote-btn">
+                ★ VOTE THIS ASSET
+              </button>
+              <a href="gallery.html" class="btn btn-outline-cyan asset-back-btn">
+                ◀ BACK TO GALLERY
+              </a>
+            </div>
+
+            <!-- Admin actions -->
+            <div class="asset-admin-actions" id="asset-admin-actions" hidden>
+              <span class="admin-label">// ADMIN PANEL</span>
+              <div class="admin-btns">
+                <button class="btn btn-outline-red" id="asset-delete-btn">✖ DELETE ASSET</button>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <p class="logo">[ CHULES RPG ]</p>
+          <p>A project made out of love for videogames and videogame development</p>
+        </div>
+        <div class="footer-col">
+          <h5>Navigation</h5>
+          <ul>
+            <li><a href="index.html#about">ChulesRpg</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="news.html">News</a></li>
+            <li><a href="changelog.html">Changelog</a></li>
+            <li><a href="forum.html">Forum</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Community</h5>
+          <ul>
+            <li><a href="#">Discord</a></li>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">YouTube</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© ChulesRPG · All rights reserved</p>
+        <p class="footer-version">v1.0 · IN DEVELOPMENT</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ERROR POPUP -->
+  <div id="error-overlay" class="error-overlay" hidden>
+    <div class="error-popup">
+      <span class="ep-corner ep-tl"></span>
+      <span class="ep-corner ep-tr"></span>
+      <span class="ep-corner ep-bl"></span>
+      <span class="ep-corner ep-br"></span>
+      <div class="error-popup-header">
+        <span class="error-popup-icon">✖</span>
+        <span class="error-popup-title">// SYSTEM ERROR</span>
+        <button class="error-popup-close" id="error-close" aria-label="Close">✖</button>
+      </div>
+      <div class="error-popup-body">
+        <p class="error-code">ERR_CODE :: <span id="error-code">000</span></p>
+        <p id="error-message" class="error-message">An unexpected error has occurred.</p>
+      </div>
+      <div class="error-popup-footer">
+        <button class="btn btn-outline-red" id="error-dismiss">[ DISMISS ]</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUCCESS POPUP -->
+  <div id="success-overlay" class="success-overlay" hidden>
+    <div class="success-popup">
+      <span class="ep-corner sp-tl"></span>
+      <span class="ep-corner sp-tr"></span>
+      <span class="ep-corner sp-bl"></span>
+      <span class="ep-corner sp-br"></span>
+      <div class="success-popup-header">
+        <span class="success-popup-icon">✔</span>
+        <span class="success-popup-title">// SYSTEM OK</span>
+        <button class="success-popup-close" id="success-close" aria-label="Close">✖</button>
+      </div>
+      <div class="success-popup-body">
+        <p class="success-code">OK_CODE :: <span id="success-code">200</span></p>
+        <p id="success-message" class="success-message">Operation completed successfully.</p>
+      </div>
+      <div class="success-popup-footer">
+        <button class="btn btn-outline-green-popup" id="success-dismiss">[ OK ]</button>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

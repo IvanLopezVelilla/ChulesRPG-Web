@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ChulesRPG — Forum</title>
+  <link rel="stylesheet" href="Styles/styles.css" />
+  <link rel="stylesheet" href="Styles/forum.css" />
+  <script src="JS/forum.js" defer></script>
+
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="container">
+      <span>[ WELCOME TO THE OFICIAL WEB OF CHULES RPG ]</span>
+      <span class="marquee-text">● VERSION 1.0 IN DEVELOPMENT</span>
+      <span class="topbar-right">► DOWNLOAD AVAILABLE</span>
+    </div>
+  </div>
+
+  <!-- HEADER / NAVBAR -->
+  <header>
+    <nav class="container">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-bracket">[</span>
+        CHULES RPG
+        <span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html#about">ChulesRpg</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="changelog.html">Changelog</a></li>
+        <li><a href="forum.html" class="nav-active">Forum</a></li>
+      </ul>
+      <div class="nav-auth">
+        <a href="index.html#auth" class="btn btn-outline-cyan" id="nav-login-btn">LOGIN</a>
+        <a href="index.html#auth" class="btn btn-fill-cyan" id="nav-register-btn">REGISTER</a>
+        <p id="loggedUsername"></p>
+        <button class="btn btn-outline-red" id="nav-logout-btn" hidden>LOGOUT ⏻</button>
+        <button class="btn btn-outline-cyan" id="nav-admin-btn" hidden>ADMIN</button>
+      </div>
+    </nav>
+  </header>
+
+
+  <main>
+
+    <!-- PAGE HEADER -->
+    <section class="forum-page-header">
+      <div class="container forum-header-inner">
+
+        <!-- Rules panel — left side -->
+        <div class="forum-rules-panel">
+          <span class="ep-corner fr-tl"></span>
+          <span class="ep-corner fr-tr"></span>
+          <span class="ep-corner fr-bl"></span>
+          <span class="ep-corner fr-br"></span>
+          <span class="forum-rules-title">// RULES</span>
+          <ul class="forum-rules-list">
+            <li>Be respectful to other members</li>
+            <li>No spam or repeated messages</li>
+            <li>Keep it related to ChulesRPG</li>
+            <li>Bug reports are very welcome!</li>
+            <li>Have fun and enjoy the community</li>
+          </ul>
+        </div>
+
+        <!-- Center: title -->
+        <div class="forum-header-center">
+          <p class="hero-eyebrow">▶ COMMUNITY · DISCUSS &amp; SHARE</p>
+          <h1 class="forum-page-title">
+            // COMMUNITY <span class="highlight">FORUM</span>
+          </h1>
+          <p class="forum-page-subtitle">
+            Talk about the game, share ideas, report bugs or just say hi.<br>
+            All messages are visible to everyone.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- FORUM BODY -->
+    <section class="forum-section">
+      <div class="container">
+
+        <div class="forum-layout">
+
+          <!-- MESSAGES FEED -->
+          <div class="forum-feed" id="forum-feed">
+
+            <!-- Stats bar -->
+            <div class="forum-feed-header">
+              <span class="feed-label">// MESSAGE BOARD</span>
+              <span class="feed-count"><strong id="msg-count">5</strong> messages</span>
+            </div>
+
+            <!-- ── HARDCODED MESSAGES (replace with JS-rendered ones) ── -->
+            <div class="forum-feed-messages" id="forum-feed-messages">
+
+            <article class="forum-msg">
+              <div class="msg-meta">
+                <span class="msg-author">◈ DevChules</span>
+                <span class="msg-badge admin-badge">ADMIN</span>
+                <span class="msg-date">21 / 05 / 2025 · 14:32</span>
+              </div>
+              <p class="msg-body">
+                Welcome to the ChulesRPG forum! This is the place to share feedback, bug reports and ideas. 
+                We're still in early development so every opinion counts. Thanks for being here!
+              </p>
+            </article>
+
+            <article class="forum-msg">
+              <div class="msg-meta">
+                <span class="msg-author">◈ RetroGamer99</span>
+                <span class="msg-date">22 / 05 / 2025 · 09:15</span>
+              </div>
+              <p class="msg-body">
+                Just found this project and I love the concept. A community-driven roguelike where 
+                anyone can upload assets is such a cool idea. Can't wait for the first playable build!
+              </p>
+            </article>
+
+            <article class="forum-msg">
+              <div class="msg-meta">
+                <span class="msg-author">◈ PixelWitch</span>
+                <span class="msg-date">22 / 05 / 2025 · 17:48</span>
+              </div>
+              <p class="msg-body">
+                Already uploaded my first sprite set. The upload page works great! One suggestion: 
+                it would be cool to have a preview of how the asset looks in-game before it gets added to runs.
+              </p>
+            </article>
+
+            <article class="forum-msg">
+              <div class="msg-meta">
+                <span class="msg-author">◈ Chules96</span>
+                <span class="msg-date">23 / 05 / 2025 · 11:03</span>
+              </div>
+              <p class="msg-body">
+                Is there a Discord yet? Would love to have a place to chat in real time and coordinate 
+                asset packs with other artists.
+              </p>
+            </article>
+
+            <article class="forum-msg">
+              <div class="msg-meta">
+                <span class="msg-author">◈ DevChules</span>
+                <span class="msg-badge admin-badge">ADMIN</span>
+                <span class="msg-date">23 / 05 / 2025 · 13:27</span>
+              </div>
+              <p class="msg-body">
+                Discord is coming soon! In the meantime keep the conversation going here. 
+                Also working on the in-game preview feature — great suggestion PixelWitch!
+              </p>
+            </article>
+
+            </div><!-- /.forum-feed-messages -->
+
+          </div>
+
+
+          <!-- WRITE A MESSAGE -->
+          <div class="forum-compose">
+
+            <div class="compose-panel">
+              <span class="ep-corner cp-tl"></span>
+              <span class="ep-corner cp-tr"></span>
+              <span class="ep-corner cp-bl"></span>
+              <span class="ep-corner cp-br"></span>
+
+              <span class="compose-title">// WRITE A MESSAGE</span>
+
+              <!-- Login warning (shown when not logged in) -->
+              <div class="compose-login-warning" id="compose-login-warning">
+                <span class="warning-icon-sm">⚠</span>
+                <p>You must be <a href="index.html#auth">logged in</a> to post a message.</p>
+              </div>
+
+              <!-- Compose form (shown when logged in) -->
+              <div class="compose-form" id="compose-form" hidden>
+                <div class="compose-form-row">
+                  <div class="form-group compose-textarea-wrap">
+                    <label for="msg-input">Message</label>
+                    <textarea
+                      id="msg-input"
+                      class="msg-textarea"
+                      placeholder="Write something..."
+                      maxlength="500"
+                      rows="3"
+                    ></textarea>
+                    <span class="char-counter"><span id="char-count">0</span> / 500</span>
+                  </div>
+                  <button class="btn btn-fill-cyan forum-send-btn" id="forum-send-btn">
+                    ► SEND
+                  </button>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <p class="logo">[ CHULES RPG ]</p>
+          <p>A project made out of love for videogames and videogame development</p>
+        </div>
+        <div class="footer-col">
+          <h5>Navigation</h5>
+          <ul>
+            <li><a href="index.html#about">ChulesRpg</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="news.html">News</a></li>
+            <li><a href="changelog.html">Changelog</a></li>
+            <li><a href="forum.html">Forum</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Community</h5>
+          <ul>
+            <li><a href="#">Discord</a></li>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">YouTube</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© ChulesRPG · All rights reserved</p>
+        <p class="footer-version">v1.0 · IN DEVELOPMENT</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ERROR POPUP -->
+  <div id="error-overlay" class="error-overlay" hidden>
+    <div class="error-popup">
+      <span class="ep-corner ep-tl"></span>
+      <span class="ep-corner ep-tr"></span>
+      <span class="ep-corner ep-bl"></span>
+      <span class="ep-corner ep-br"></span>
+      <div class="error-popup-header">
+        <span class="error-popup-icon">✖</span>
+        <span class="error-popup-title">// SYSTEM ERROR</span>
+        <button class="error-popup-close" id="error-close" aria-label="Close">✖</button>
+      </div>
+      <div class="error-popup-body">
+        <p class="error-code">ERR_CODE :: <span id="error-code">000</span></p>
+        <p id="error-message" class="error-message">An unexpected error has occurred.</p>
+      </div>
+      <div class="error-popup-footer">
+        <button class="btn btn-outline-red" id="error-dismiss">[ DISMISS ]</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUCCESS POPUP -->
+  <div id="success-overlay" class="success-overlay" hidden>
+    <div class="success-popup">
+      <span class="ep-corner sp-tl"></span>
+      <span class="ep-corner sp-tr"></span>
+      <span class="ep-corner sp-bl"></span>
+      <span class="ep-corner sp-br"></span>
+      <div class="success-popup-header">
+        <span class="success-popup-icon">✔</span>
+        <span class="success-popup-title">// SYSTEM OK</span>
+        <button class="success-popup-close" id="success-close" aria-label="Close">✖</button>
+      </div>
+      <div class="success-popup-body">
+        <p class="success-code">OK_CODE :: <span id="success-code">200</span></p>
+        <p id="success-message" class="success-message">Operation completed successfully.</p>
+      </div>
+      <div class="success-popup-footer">
+        <button class="btn btn-outline-green-popup" id="success-dismiss">[ OK ]</button>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

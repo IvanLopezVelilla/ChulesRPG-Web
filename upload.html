@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ChulesRPG — Upload Asset</title>
+  <link rel="stylesheet" href="Styles/styles.css" />
+  <link rel="stylesheet" href="Styles/upload.css" />
+  <script src="JS/upload.js" defer></script>
+
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="container">
+      <span>[ WELCOME TO THE OFICIAL WEB OF CHULES RPG ]</span>
+      <span class="marquee-text">● VERSION 1.0 IN DEVELOPMENT</span>
+      <span class="topbar-right">► DOWNLOAD AVAILABLE</span>
+    </div>
+  </div>
+
+  <!-- HEADER / NAVBAR -->
+  <header>
+    <nav class="container">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-bracket">[</span>
+        CHULES RPG
+        <span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html#about">ChulesRpg</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="changelog.html">Changelog</a></li>
+        <li><a href="forum.html">Forum</a></li>
+      </ul>
+      <div class="nav-auth">
+        <a href="index.html#auth" class="btn btn-outline-cyan" id="nav-login-btn">LOGIN</a>
+        <a href="index.html#auth" class="btn btn-fill-cyan" id="nav-register-btn">REGISTER</a>
+        <p id="loggedUsername"></p>
+        <button class="btn btn-outline-red" id="nav-logout-btn" hidden>LOGOUT ⏻</button>
+        <button class="btn btn-outline-cyan" id="nav-admin-btn" hidden>ADMIN</button>
+      </div>
+    </nav>
+  </header>
+
+
+  <main>
+
+    <!-- PAGE HEADER -->
+    <section class="upload-page-header">
+      <div class="container">
+        <p class="hero-eyebrow">▶ COMMUNITY CONTENT · CONTRIBUTE</p>
+        <h1 class="upload-page-title">▲ UPLOAD <span class="highlight">ASSET</span></h1>
+        <p class="upload-page-subtitle">
+          Your asset will appear in future runs for all players.<br>
+          Make sure it fits the retro pixel art style of the game!
+        </p>
+      </div>
+    </section>
+
+
+    <!-- MAIN CONTENT: form + sidebar -->
+    <section class="upload-section">
+      <div class="container">
+        <div class="upload-layout">
+
+
+          <!-- ══ NOT LOGGED IN WARNING -->
+          <div id="upload-login-warning" class="upload-login-warning">
+            <span class="ep-corner ep-tl"></span>
+            <span class="ep-corner ep-tr"></span>
+            <span class="ep-corner ep-bl"></span>
+            <span class="ep-corner ep-br"></span>
+
+            <div class="warning-icon">⚠</div>
+            <h2 class="warning-title">// ACCESS DENIED</h2>
+            <p class="warning-text">
+              You must be logged in to upload assets.<br>
+              Join the community and contribute to the game!
+            </p>
+            <div class="warning-actions">
+              <a href="index.html#auth" class="btn btn-fill-cyan">LOGIN →</a>
+              <a href="index.html#auth" class="btn btn-outline-cyan">CREATE ACCOUNT</a>
+            </div>
+          </div>
+
+
+          <!-- ══ UPLOAD FORM -->
+          <div id="upload-form-wrap" class="upload-form-wrap" hidden>
+            <div class="upload-panel">
+              <span class="ep-corner ep-tl"></span>
+              <span class="ep-corner ep-tr"></span>
+              <span class="ep-corner ep-bl"></span>
+              <span class="ep-corner ep-br"></span>
+
+              <h2 class="upload-panel-title">// NEW ASSET</h2>
+
+              <!-- ASSET NAME -->
+              <div class="form-group">
+                <label for="asset-name">Asset name</label>
+                <input
+                  type="text"
+                  id="asset-name"
+                  placeholder="Chules spritesheet"
+                  maxlength="60"
+                />
+                <span class="field-hint">Max 60 characters</span>
+              </div>
+
+              <!-- CATEGORY -->
+              <div class="form-group">
+                <label for="asset-category">Category</label>
+                <div class="select-wrap">
+                  <select id="asset-category">
+                      <option value="" disabled selected>— Select a category —</option>
+                  </select>
+                  <span class="select-arrow">▼</span>
+                </div>
+              </div>
+
+              <!-- SKILL FIELDS (hidden unless category = skill) -->
+              <div id="skill-fields-wrap" hidden>
+
+                <div class="skill-fields-divider">
+                  <span>// SKILL DATA</span>
+                </div>
+
+                <!-- VALUE + MANA COST (side by side) -->
+                <div class="skill-fields-row">
+                  <div class="form-group">
+                    <label for="skill-value">Value</label>
+                    <input
+                      type="number"
+                      id="skill-value"
+                      placeholder="25"
+                      min="0"
+                      max="9999"
+                    />
+                    <span class="field-hint">Damage / heal amount</span>
+                  </div>
+                  <div class="form-group">
+                    <label for="skill-mana-cost">Mana cost</label>
+                    <input
+                      type="number"
+                      id="skill-mana-cost"
+                      placeholder="10"
+                      min="0"
+                      max="9999"
+                    />
+                    <span class="field-hint">MP required to cast</span>
+                  </div>
+                </div>
+
+                <!-- TYPE -->
+                <div class="form-group">
+                  <label for="skill-type">Type</label>
+                  <div class="select-wrap">
+                    <select id="skill-type">
+                      <option value="damage" selected>⚔ Damage</option>
+                      <option value="heal">✚ Heal</option>
+                      <option value="defense">🛡 Defense</option>
+                    </select>
+                    <span class="select-arrow">▼</span>
+                  </div>
+                </div>
+
+                <!-- DESCRIPTION -->
+                <div class="form-group">
+                  <label for="skill-description">Description</label>
+                  <textarea
+                    id="skill-description"
+                    placeholder="Unleashes a burst of arcane energy, dealing damage to all nearby enemies..."
+                    maxlength="280"
+                    rows="3"
+                  ></textarea>
+                  <span class="field-hint">Max 280 characters</span>
+                </div>
+
+              </div>
+
+              <!-- ENEMY FIELDS (hidden unless category = enemy) -->
+              <div id="enemy-fields-wrap" hidden>
+
+                <div class="skill-fields-divider">
+                  <span>// ENEMY DATA</span>
+                </div>
+
+                <!-- ROW 1 -->
+                <div class="enemy-fields-row">
+
+                  <div class="form-group">
+                    <label for="enemy-level">Level</label>
+                    <input
+                      type="number"
+                      id="enemy-level"
+                      placeholder="1"
+                      min="1"
+                      max="9999"
+                    />
+                    <span class="field-hint">Enemy level</span>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="enemy-life">Life</label>
+                    <input
+                      type="number"
+                      id="enemy-life"
+                      placeholder="100"
+                      min="0"
+                      max="999999"
+                    />
+                    <span class="field-hint">Maximum HP</span>
+                  </div>
+
+                </div>
+
+                <!-- ROW 2 -->
+                <div class="enemy-fields-row">
+
+                  <div class="form-group">
+                    <label for="enemy-mana">Mana</label>
+                    <input
+                      type="number"
+                      id="enemy-mana"
+                      placeholder="50"
+                      min="0"
+                      max="999999"
+                    />
+                    <span class="field-hint">Maximum MP</span>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="enemy-attack">Attack</label>
+                    <input
+                      type="number"
+                      id="enemy-attack"
+                      placeholder="20"
+                      min="0"
+                      max="999999"
+                    />
+                    <span class="field-hint">Physical damage</span>
+                  </div>
+
+                </div>
+
+                <!-- ROW 3 -->
+                <div class="enemy-fields-row">
+
+                  <div class="form-group">
+                    <label for="enemy-defense">Defense</label>
+                    <input
+                      type="number"
+                      id="enemy-defense"
+                      placeholder="10"
+                      min="0"
+                      max="999999"
+                    />
+                    <span class="field-hint">Damage reduction</span>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="enemy-speed">Speed</label>
+                    <input
+                      type="number"
+                      id="enemy-speed"
+                      placeholder="8"
+                      min="0"
+                      max="999999"
+                    />
+                    <span class="field-hint">Turn priority</span>
+                  </div>
+
+                </div>
+
+                <!-- ROW 4 -->
+                <div class="enemy-fields-row">
+
+                  <div class="form-group">
+                    <label for="enemy-exp">EXP</label>
+                    <input
+                      type="number"
+                      id="enemy-exp"
+                      placeholder="25"
+                      min="0"
+                      max="999999"
+                    />
+                    <span class="field-hint">Experience rewarded</span>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="enemy-money">Money</label>
+                    <input
+                      type="number"
+                      id="enemy-money"
+                      placeholder="15"
+                      min="0"
+                      max="999999"
+                    />
+                    <span class="field-hint">Gold rewarded</span>
+                  </div>
+
+                </div>
+
+              </div>
+
+              <!-- IMAGE UPLOAD — single -->
+              <div class="form-group" id="upload-single-wrap" hidden>
+                <label>Image file</label>
+                <div class="file-drop-zone" id="file-drop-zone">
+                  <span class="ep-corner ep-tl"></span>
+                  <span class="ep-corner ep-tr"></span>
+                  <span class="ep-corner ep-bl"></span>
+                  <span class="ep-corner ep-br"></span>
+
+                  <!-- Preview (hidden until file selected) -->
+                  <img id="image-preview" class="image-preview" src="" alt="Preview" hidden />
+
+                  <!-- Default drop state -->
+                  <div id="drop-placeholder" class="drop-placeholder">
+                    <span class="drop-icon">▲</span>
+                    <p class="drop-text">Drag &amp; drop your images here</p>
+                    <p class="drop-subtext">or</p>
+                    <label for="asset-images" class="btn btn-outline-cyan drop-browse-btn">
+                      BROWSE FILE
+                    </label>
+                  </div>
+
+                  <input type="file" id="asset-images" accept="image/*" class="file-input-hidden" />
+                </div>
+                <span class="field-hint">PNG or GIF recommended · Max 2MB · Pixel art style</span>
+              </div>
+
+              <!-- IMAGE UPLOAD — Spritesheet-->
+              <div class="form-group" id="upload-directions-wrap">
+                <label>Sprite frames — directions</label>
+                <div class="sprite-directions-grid">
+
+                  <!-- ▲ UP -->
+                  <div class="sd-quadrant" id="sdq-up">
+                    <span class="sd-dir-label">▲ UP</span>
+                    <div class="sd-slots-row">
+                      <label class="sd-slot" id="sd-up1" for="sd-input-up1" title="UP — frame 1">
+                        <span class="sd-frame-num">FRAME 1</span>
+                        <span class="sd-plus">+</span>
+                        <img class="sd-preview" src="" alt="" hidden />
+                        <input type="file" id="sd-input-up1" accept="image/*" class="sd-file-input" />
+                      </label>
+                      <label class="sd-slot" id="sd-up2" for="sd-input-up2" title="UP — frame 2">
+                        <span class="sd-frame-num">FRAME 2</span>
+                        <span class="sd-plus">+</span>
+                        <img class="sd-preview" src="" alt="" hidden />
+                        <input type="file" id="sd-input-up2" accept="image/*" class="sd-file-input" />
+                      </label>
+                    </div>
+                  </div>
+
+                  <!-- ▼ DOWN -->
+                  <div class="sd-quadrant" id="sdq-down">
+                    <span class="sd-dir-label">▼ DOWN</span>
+                    <div class="sd-slots-row">
+                      <label class="sd-slot" id="sd-down1" for="sd-input-down1" title="DOWN — frame 1">
+                        <span class="sd-frame-num">FRAME 1</span>
+                        <span class="sd-plus">+</span>
+                        <img class="sd-preview" src="" alt="" hidden />
+                        <input type="file" id="sd-input-down1" accept="image/*" class="sd-file-input" />
+                      </label>
+                      <label class="sd-slot" id="sd-down2" for="sd-input-down2" title="DOWN — frame 2">
+                        <span class="sd-frame-num">FRAME 2</span>
+                        <span class="sd-plus">+</span>
+                        <img class="sd-preview" src="" alt="" hidden />
+                        <input type="file" id="sd-input-down2" accept="image/*" class="sd-file-input" />
+                      </label>
+                    </div>
+                  </div>
+
+                  <!-- ◄ LEFT -->
+                  <div class="sd-quadrant" id="sdq-left">
+                    <span class="sd-dir-label">◄ LEFT</span>
+                    <div class="sd-slots-row">
+                      <label class="sd-slot" id="sd-left1" for="sd-input-left1" title="LEFT — frame 1">
+                        <span class="sd-frame-num">FRAME 1</span>
+                        <span class="sd-plus">+</span>
+                        <img class="sd-preview" src="" alt="" hidden />
+                        <input type="file" id="sd-input-left1" accept="image/*" class="sd-file-input" />
+                      </label>
+                      <label class="sd-slot" id="sd-left2" for="sd-input-left2" title="LEFT — frame 2">
+                        <span class="sd-frame-num">FRAME 2</span>
+                        <span class="sd-plus">+</span>
+                        <img class="sd-preview" src="" alt="" hidden />
+                        <input type="file" id="sd-input-left2" accept="image/*" class="sd-file-input" />
+                      </label>
+                    </div>
+                  </div>
+
+                  <!-- ► RIGHT -->
+                  <div class="sd-quadrant" id="sdq-right">
+                    <span class="sd-dir-label">► RIGHT</span>
+                    <div class="sd-slots-row">
+                      <label class="sd-slot" id="sd-right1" for="sd-input-right1" title="RIGHT — frame 1">
+                        <span class="sd-frame-num">FRAME 1</span>
+                        <span class="sd-plus">+</span>
+                        <img class="sd-preview" src="" alt="" hidden />
+                        <input type="file" id="sd-input-right1" accept="image/*" class="sd-file-input" />
+                      </label>
+                      <label class="sd-slot" id="sd-right2" for="sd-input-right2" title="RIGHT — frame 2">
+                        <span class="sd-frame-num">FRAME 2</span>
+                        <span class="sd-plus">+</span>
+                        <img class="sd-preview" src="" alt="" hidden />
+                        <input type="file" id="sd-input-right2" accept="image/*" class="sd-file-input" />
+                      </label>
+                    </div>
+                  </div>
+
+                </div>
+                <span class="field-hint">PNG · 16×16 px recommended · 2 frames por dirección</span>
+              </div>
+
+              <!-- SUBMIT -->
+              <button id="uploadSubmitBtn" class="btn btn-fill-gold upload-submit-btn">
+                ▲ SUBMIT ASSET
+              </button>
+
+            </div>
+          </div>
+
+
+          <!-- ══ SIDEBAR ══ -->
+          <aside class="upload-sidebar">
+
+            <!-- Guidelines -->
+            <div class="sidebar-panel">
+              <span class="ep-corner ep-tl"></span>
+              <span class="ep-corner ep-tr"></span>
+              <span class="ep-corner ep-bl"></span>
+              <span class="ep-corner ep-br"></span>
+
+              <h3 class="sidebar-title">// GUIDELINES</h3>
+              <ul class="guideline-list">
+                <li>Max file size: 16MB</li>
+                <li>No offensive content</li>
+                <li>Recommended size 16x16</li>
+                <li>Different name for each image</li>
+              </ul>
+            </div>
+
+            <!-- Categories info -->
+            <div class="sidebar-panel">
+              <span class="ep-corner ep-tl"></span>
+              <span class="ep-corner ep-tr"></span>
+              <span class="ep-corner ep-bl"></span>
+              <span class="ep-corner ep-br"></span>
+
+              <h3 class="sidebar-title">// CATEGORIES</h3>
+              <ul class="category-info-list">
+                <li><span class="cat-tag cyan">Characters</span>Player sprites &amp; NPCs</li>
+                <li><span class="cat-tag red">Enemies</span>Monsters &amp; bosses</li>
+                <li><span class="cat-tag gold">Skills</span>Fire, defense &amp; </li>
+              </ul>
+            </div>
+
+            <!-- Back to gallery -->
+            <a href="gallery.html" class="btn btn-outline-cyan sidebar-back-btn">
+              ← BACK TO GALLERY
+            </a>
+
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <p class="logo">[ CHULES RPG ]</p>
+          <p>A project made out of love for videogames and videogame development</p>
+        </div>
+        <div class="footer-col">
+          <h5>Navigation</h5>
+          <ul>
+            <li><a href="index.html#about">ChulesRpg</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="news.html">News</a></li>
+            <li><a href="changelog.html">Changelog</a></li>
+            <li><a href="forum.html">Forum</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Community</h5>
+          <ul>
+            <li><a href="#">Discord</a></li>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">YouTube</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© ChulesRPG · All rights reserved</p>
+        <p class="footer-version">v1.0 · IN DEVELOPMENT</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ERROR POPUP -->
+  <div id="error-overlay" class="error-overlay" hidden>
+    <div class="error-popup">
+      <span class="ep-corner ep-tl"></span>
+      <span class="ep-corner ep-tr"></span>
+      <span class="ep-corner ep-bl"></span>
+      <span class="ep-corner ep-br"></span>
+      <div class="error-popup-header">
+        <span class="error-popup-icon">✖</span>
+        <span class="error-popup-title">// SYSTEM ERROR</span>
+        <button class="error-popup-close" id="error-close" aria-label="Close">✖</button>
+      </div>
+      <div class="error-popup-body">
+        <p class="error-code">ERR_CODE :: <span id="error-code">000</span></p>
+        <p id="error-message" class="error-message">An unexpected error has occurred.</p>
+      </div>
+      <div class="error-popup-footer">
+        <button class="btn btn-outline-red" id="error-dismiss">[ DISMISS ]</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUCCESS POPUP -->
+  <div id="success-overlay" class="success-overlay" hidden>
+    <div class="success-popup">
+      <span class="ep-corner sp-tl"></span>
+      <span class="ep-corner sp-tr"></span>
+      <span class="ep-corner sp-bl"></span>
+      <span class="ep-corner sp-br"></span>
+      <div class="success-popup-header">
+        <span class="success-popup-icon">✔</span>
+        <span class="success-popup-title">// SYSTEM OK</span>
+        <button class="success-popup-close" id="success-close" aria-label="Close">✖</button>
+      </div>
+      <div class="success-popup-body">
+        <p class="success-code">OK_CODE :: <span id="success-code">200</span></p>
+        <p id="success-message" class="success-message">Operation completed successfully.</p>
+      </div>
+      <div class="success-popup-footer">
+        <button class="btn btn-outline-green-popup" id="success-dismiss">[ OK ]</button>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

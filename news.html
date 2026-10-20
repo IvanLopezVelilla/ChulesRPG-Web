@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ChulesRPG — News</title>
+  <link rel="stylesheet" href="Styles/styles.css" />
+  <link rel="stylesheet" href="Styles/news.css" />
+  <script src="JS/news.js" defer></script>
+
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="container">
+      <span>[ WELCOME TO THE OFICIAL WEB OF CHULES RPG ]</span>
+      <span class="marquee-text">● VERSION 1.0 IN DEVELOPMENT</span>
+      <span class="topbar-right">► DOWNLOAD AVAILABLE</span>
+    </div>
+  </div>
+
+  <!-- HEADER / NAVBAR -->
+  <header>
+    <nav class="container">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-bracket">[</span>
+        CHULES RPG
+        <span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html#about">ChulesRpg</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="news.html" class="nav-active">News</a></li>
+        <li><a href="changelog.html">Changelog</a></li>
+        <li><a href="forum.html">Forum</a></li>
+      </ul>
+      <div class="nav-auth">
+        <a href="index.html#auth" class="btn btn-outline-cyan" id="nav-login-btn">LOGIN</a>
+        <a href="index.html#auth" class="btn btn-fill-cyan" id="nav-register-btn">REGISTER</a>
+        <p id="loggedUsername"></p>
+        <button class="btn btn-outline-red" id="nav-logout-btn" hidden>LOGOUT ⏻</button>
+        <button class="btn btn-outline-cyan" id="nav-admin-btn" hidden>ADMIN</button>
+      </div>
+    </nav>
+  </header>
+
+
+  <main>
+
+    <!-- PAGE HEADER -->
+    <section class="news-page-header">
+      <div class="container">
+        <p class="hero-eyebrow">▶ DEVLOG · ANNOUNCEMENTS · UPDATES</p>
+        <h1 class="news-page-title">
+          // LATEST <span class="highlight">NEWS</span>
+        </h1>
+        <p class="news-page-subtitle">
+          Stay up to date with everything happening in ChulesRPG.<br>
+          Dev logs, announcements and patch notes.
+        </p>
+      </div>
+    </section>
+
+
+    <!-- ADMIN: CREATE NEWS FORM -->
+    <div class="news-admin-form-wrap" hidden>
+      <div class="container">
+
+        <div class="news-admin-form">
+          <span class="ep-corner naf-tl"></span>
+          <span class="ep-corner naf-tr"></span>
+          <span class="ep-corner naf-bl"></span>
+          <span class="ep-corner naf-br"></span>
+
+          <div class="news-admin-form-header">
+            <span class="news-admin-form-title">// ADMIN · CREATE NEWS</span>
+            <button class="btn btn-outline-cyan news-admin-toggle" id="news-admin-toggle">▲ COLLAPSE</button>
+          </div>
+
+          <div class="news-admin-form-body" id="news-admin-form-body">
+
+            <div class="form-group">
+              <label for="news-title-input">Title</label>
+              <input type="text" id="news-title-input" placeholder="Gallery system is now live!" />
+            </div>
+
+            <div class="form-group">
+              <label for="news-body-input">Content</label>
+              <textarea
+                id="news-body-input"
+                class="news-textarea"
+                placeholder="Write the full news content here..."
+                rows="6"
+              ></textarea>
+            </div>
+
+            <div class="news-form-submit-row">
+              <button class="btn btn-fill-gold news-submit-btn" id="news-submit-btn" type="button">
+                ► PUBLISH NEWS
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- NEWS DETAIL -->
+    <section class="news-open-section" id="news-open-section" hidden>
+      <div class="container">
+
+        <div class="news-open-layout">
+
+          <!-- Article -->
+          <article class="news-open-article">
+
+            <!-- Back + admin actions bar -->
+            <div class="news-open-topbar">
+              <a href="news.html" class="breadcrumb-back">◀ CLOSE NEW</a>
+              <button class="btn btn-outline-red news-delete-btn" id="news-delete-btn" type="button" hidden>
+                ✖ DELETE NEW
+              </button>
+            </div>
+
+            <!-- Header -->
+            <div class="news-open-header">
+              <h1 class="news-open-title" id="news-open-title">
+                Gallery system is now live!
+              </h1>
+              <span class="news-open-date" id="news-open-date">15 / 05 / 2025</span>
+            </div>
+
+            <!-- Body -->
+            <div class="news-open-body" id="news-open-body">
+              <p>
+                The community asset gallery is officially open to everyone. From today, any registered
+                user can upload their own sprites, backgrounds, enemies and items to be featured in the game.
+              </p>
+              <p>
+                Assets are reviewed by the community through the voting system — the more votes an asset
+                gets, the more likely it is to appear in future runs. This means the game literally gets
+                shaped by the players.
+              </p>
+              <p>
+                Head over to the gallery section, browse what other players have already uploaded, and
+                submit your own creations. The best assets will make it into the next build!
+              </p>
+            </div>
+
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- NEWS SECTION -->
+    <section class="news-section" id="news-list-section">
+      <div class="container">
+
+        <!-- ── NEWS GRID (list of all news) ── -->
+        <div class="news-grid" id="news-grid">
+
+          <a href="news.html?id=1" class="news-card-link">
+            <article class="news-card">
+              <span class="news-card-tag tag-announcement">Announcement</span>
+              <h3 class="news-card-title">Gallery system is now live!</h3>
+              <p class="news-card-excerpt">
+                The community asset gallery is officially open. Upload your sprites, vote on your
+                favourites and watch them appear in the next run.
+              </p>
+              <div class="news-card-footer">
+                <span class="news-card-date">15 / 05 / 2025</span>
+                <span class="news-card-read">READ MORE →</span>
+              </div>
+            </article>
+          </a>
+
+          <a href="news.html?id=2" class="news-card-link">
+            <article class="news-card">
+              <span class="news-card-tag tag-devlog">Dev Log</span>
+              <h3 class="news-card-title">Dev Log #3 — Building the vote system</h3>
+              <p class="news-card-excerpt">
+                This week we finished the voting backend. Here's a breakdown of how it works,
+                why we chose the votes table approach, and what's coming next.
+              </p>
+              <div class="news-card-footer">
+                <span class="news-card-date">08 / 05 / 2025</span>
+                <span class="news-card-read">READ MORE →</span>
+              </div>
+            </article>
+          </a>
+
+          <a href="news.html?id=3" class="news-card-link">
+            <article class="news-card">
+              <span class="news-card-tag tag-update">Update</span>
+              <h3 class="news-card-title">v0.2.1 — Auth hotfix deployed</h3>
+              <p class="news-card-excerpt">
+                Fixed a critical bug in the register form that caused a 500 error on
+                duplicate emails. Logout button visibility also corrected.
+              </p>
+              <div class="news-card-footer">
+                <span class="news-card-date">28 / 04 / 2025</span>
+                <span class="news-card-read">READ MORE →</span>
+              </div>
+            </article>
+          </a>
+
+          <a href="news.html?id=4" class="news-card-link">
+            <article class="news-card">
+              <span class="news-card-tag tag-announcement">Announcement</span>
+              <h3 class="news-card-title">Official website is up!</h3>
+              <p class="news-card-excerpt">
+                The ChulesRPG website is finally live. Home, gallery, forum and
+                changelog sections are all online. More content coming soon.
+              </p>
+              <div class="news-card-footer">
+                <span class="news-card-date">10 / 04 / 2025</span>
+                <span class="news-card-read">READ MORE →</span>
+              </div>
+            </article>
+          </a>
+
+          <a href="news.html?id=5" class="news-card-link">
+            <article class="news-card">
+              <span class="news-card-tag tag-devlog">Dev Log</span>
+              <h3 class="news-card-title">Dev Log #1 — Where it all started</h3>
+              <p class="news-card-excerpt">
+                A brief writeup about the origins of the project, the inspiration behind
+                a community-driven roguelike, and the road ahead.
+              </p>
+              <div class="news-card-footer">
+                <span class="news-card-date">01 / 03 / 2025</span>
+                <span class="news-card-read">READ MORE →</span>
+              </div>
+            </article>
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <p class="logo">[ CHULES RPG ]</p>
+          <p>A project made out of love for videogames and videogame development</p>
+        </div>
+        <div class="footer-col">
+          <h5>Navigation</h5>
+          <ul>
+            <li><a href="index.html#about">ChulesRpg</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="news.html">News</a></li>
+            <li><a href="changelog.html">Changelog</a></li>
+            <li><a href="forum.html">Forum</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Community</h5>
+          <ul>
+            <li><a href="#">Discord</a></li>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">YouTube</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© ChulesRPG · All rights reserved</p>
+        <p class="footer-version">v1.0 · IN DEVELOPMENT</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ERROR POPUP -->
+  <div id="error-overlay" class="error-overlay" hidden>
+    <div class="error-popup">
+      <span class="ep-corner ep-tl"></span>
+      <span class="ep-corner ep-tr"></span>
+      <span class="ep-corner ep-bl"></span>
+      <span class="ep-corner ep-br"></span>
+      <div class="error-popup-header">
+        <span class="error-popup-icon">✖</span>
+        <span class="error-popup-title">// SYSTEM ERROR</span>
+        <button class="error-popup-close" id="error-close" aria-label="Close">✖</button>
+      </div>
+      <div class="error-popup-body">
+        <p class="error-code">ERR_CODE :: <span id="error-code">000</span></p>
+        <p id="error-message" class="error-message">An unexpected error has occurred.</p>
+      </div>
+      <div class="error-popup-footer">
+        <button class="btn btn-outline-red" id="error-dismiss">[ DISMISS ]</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUCCESS POPUP -->
+  <div id="success-overlay" class="success-overlay" hidden>
+    <div class="success-popup">
+      <span class="ep-corner sp-tl"></span>
+      <span class="ep-corner sp-tr"></span>
+      <span class="ep-corner sp-bl"></span>
+      <span class="ep-corner sp-br"></span>
+      <div class="success-popup-header">
+        <span class="success-popup-icon">✔</span>
+        <span class="success-popup-title">// SYSTEM OK</span>
+        <button class="success-popup-close" id="success-close" aria-label="Close">✖</button>
+      </div>
+      <div class="success-popup-body">
+        <p class="success-code">OK_CODE :: <span id="success-code">200</span></p>
+        <p id="success-message" class="success-message">Operation completed successfully.</p>
+      </div>
+      <div class="success-popup-footer">
+        <button class="btn btn-outline-green-popup" id="success-dismiss">[ OK ]</button>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
