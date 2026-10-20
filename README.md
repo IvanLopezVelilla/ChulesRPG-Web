@@ -75,7 +75,7 @@ db.php         PDO connection and database methods
 
 ### 1. Prepare a database
 
-Create a local MySQL/MariaDB database and a dedicated application user with only the permissions the app needs. The database schema is not included in this repository. A local SQL export was present in the working project, so it should not be published as a substitute for a clean schema.
+Create a local MySQL/MariaDB database and a dedicated application user with only the permissions the app needs. The database schema is included in the files as a sql file "chulesrpg.sql".
 
 The PHP and Python services each have database connection settings in their source. Configure those settings for your local environment before starting either service, and never commit real credentials.
 
