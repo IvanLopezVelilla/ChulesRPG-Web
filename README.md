@@ -4,6 +4,8 @@ A community platform for **ChulesRPG**, an indie RPG project. Players can explor
 
 This repository contains the website and its game-facing API. The game client is maintained separately.
 
+This repository contains the **web server**. The companion web project is available at [ChulesRPG](https://github.com/IvanLopezVelilla/ChulesRPG).
+
 [ChulesRPG oficial website](https://ventiqkhrs.cc.cd/)
 
 ## Project overview
